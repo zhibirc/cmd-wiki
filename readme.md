@@ -105,3 +105,14 @@ Mapping processes to system ports they listen for:
 ```bash
 sudo netstat -tpln
 ```
+
+Serve folder:
+
+```bash
+python -m SimpleHTTPServer 8080
+# or
+python3 -m http.server 8080
+# or
+sudo npm install http-server -g
+http-server
+```
