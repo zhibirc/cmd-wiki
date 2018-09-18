@@ -4,6 +4,7 @@
 1. [Samba Share Access (unrestricted)](#samba-share-access-(unrestricted))
 1. [Samba Share Access (restricted)](#samba-share-access-(restricted))
 1. [Network goodies](#network-goodies)
+1. [Diff between files/folders](#diff-between-files/folders)
 
 
 ## Samba Setup ##
@@ -116,3 +117,17 @@ python3 -m http.server 8080
 sudo npm install http-server -g
 http-server
 ```
+
+
+## Diff between files/folders ##
+
+```bash
+# install "Meld", visual diff and merge tool for files, folders and VCS
+sudo apt install meld
+# diff between files
+meld file1 file2
+# diff between folders
+meld dir1 dir2
+```
+
+Also it's possible and widely used to set _Meld_ as a Git `difftool` and `mergetool`.
