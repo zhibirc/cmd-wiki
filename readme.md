@@ -5,18 +5,16 @@
 1. [Samba Share Access (restricted)](#samba-share-access-(restricted))
 1. [Network goodies](#network-goodies)
 1. [Diff between files/folders](#diff-between-files/folders)
+1. [Protected archives](#protected-archives)
 
 
-## Samba Setup ##
+### Samba Setup
 
 Actual for **Ubuntu 16.04**
 
 ```bash
 sudo apt-get install -y samba samba-common python-glade2 system-config-samba
 sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
-```
-
-```bash
 sudo vi /etc/samba/smb.conf
 ```
 
@@ -33,7 +31,7 @@ dns proxy = no
 ```
 
 
-## Samba Share Access (unrestricted) ##
+### Samba Share Access (unrestricted)
 
 ```bash
 sudo mkdir -p /samba/share
@@ -56,7 +54,7 @@ sudo service smbd restart
 ```
 
 
-## Samba Share Access (restricted) ##
+### Samba Share Access (restricted)
 
 ```bash
 sudo mkdir -p /samba/share/secured
@@ -87,7 +85,7 @@ sudo service smbd restart
 ```
 
 
-## Network goodies ##
+### Network goodies
 
 Retrieve list of Samba master browser(s):
 
@@ -119,7 +117,7 @@ http-server
 ```
 
 
-## Diff between files/folders ##
+### Diff between files/folders
 
 ```bash
 # install "Meld", visual diff and merge tool for files, folders and VCS
@@ -131,3 +129,24 @@ meld dir1 dir2
 ```
 
 Also it's possible and widely used to set _Meld_ as a Git `difftool` and `mergetool`.
+
+
+### Protected archives
+
+Create encrypted ZIP archive (password as a plain text):
+
+```bash
+zip -P s0me_paSS -r protected.zip /home/sites/*/www/
+```
+
+Create encrypted ZIP archive (request to enter password), different choices:
+
+```bash
+zip --encrypt protected.zip file_name
+zip --encrypt protected.zip file1 file2 file3
+zip --encrypt -r protected.zip /home/user/folder/
+zip --encrypt -r protected.zip /folder1/ /folder2/
+```
+
+ZIP supports a simple password-based symmetric encryption system, which is documented in the ZIP specification, and known to be **seriously flawed**, 
+so don't use it for data with limited access. 
