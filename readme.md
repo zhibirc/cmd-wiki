@@ -6,6 +6,7 @@
 1. [Network goodies](#network-goodies)
 1. [Diff between files/folders](#diff-between-files/folders)
 1. [Protected archives](#protected-archives)
+1. [Pumping .bash_aliases](#pumping-.bash_aliases)
 
 
 ### Samba Setup
@@ -149,4 +150,47 @@ zip --encrypt -r protected.zip /folder1/ /folder2/
 ```
 
 ZIP supports a simple password-based symmetric encryption system, which is documented in the ZIP specification, and known to be **seriously flawed**, 
-so don't use it for data with limited access. 
+so don't use it for data with limited access.
+
+
+### Pumping .bash_aliases
+
+It's possible to put a lot of useful shortcuts in `~/.bash_aliases` which can improve work effectiveness:
+
+```bash
+# general aliases
+alias df="df -h"
+alias du="du -c -h"
+alias mkdir="mkdir -pv"
+alias ls="ls --color=auto --group-directories-first"
+alias ll="ls -lA"
+alias lx="ll -BX"   # sort by extension
+alias lz="ll -rS"   # sort by size
+alias lt="ll -rt"   # sort by date
+alias l.="ll -d .*" # show only hidden files
+alias ..="cd .."
+alias mnt="mount | column -t"
+alias pwdgen="openssl rand -base64 30"
+alias ports="netstat -tulanp" # quickly list all TCP/UDP port on the server
+alias ping="ping -c 5" # stop after sending count ECHO_REQUEST packets
+alias wget="wget -c" # can resume downloads
+alias i="ifconfig"
+alias net="netstat -tunlep"
+
+# Git
+alias ga='git add'
+alias gp='git push'
+alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias gs='git status'
+alias gd='git diff'
+alias gm='git commit'
+alias gb='git branch'
+alias gc='git checkout'
+alias gf='git reflog'
+alias gma='git commit -am'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gpu='git pull'
+alias gcl='git clone'
+alias gta='git tag -a -m'
+```
