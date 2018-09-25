@@ -7,6 +7,7 @@
 1. [Diff between files/folders](#diff-between-files/folders)
 1. [Protected archives](#protected-archives)
 1. [Pumping .bash_aliases](#pumping-.bash_aliases)
+1. [Encrypt/decrypt a file](#encrypt/decrypt-a-file)
 
 
 ### Samba Setup
@@ -193,4 +194,16 @@ alias grr='git remote rm'
 alias gpu='git pull'
 alias gcl='git clone'
 alias gta='git tag -a -m'
+```
+
+
+### Encrypt/decrypt a file
+
+Use the built-in **gpg** tool:
+
+```bash
+# encrypt
+gpg -c important.data.txt
+# decrypt
+gpg important.data.txt.gpg
 ```
