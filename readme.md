@@ -1,3 +1,6 @@
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](license.md)
+[![Maintenance](https://img.shields.io/maintenance/yes/2018.svg?style=flat-square)]()
+
 ## Table of Contents
 
 1. [Samba Setup](#samba-setup)
@@ -8,6 +11,8 @@
 1. [Protected archives](#protected-archives)
 1. [Pumping .bash_aliases](#pumping-.bash_aliases)
 1. [Encrypt/decrypt a file](#encrypt/decrypt-a-file)
+1. [Stress test via DoS attack](#stress-test-via-dos-attack)
+1. [Bash-Snippets](#bash-snippets)
 
 
 ### Samba Setup
@@ -130,7 +135,7 @@ meld file1 file2
 meld dir1 dir2
 ```
 
-Also it's possible and widely used to set _Meld_ as a Git `difftool` and `mergetool`.
+Also it's possible and widely used to set **Meld** as a Git `difftool` and `mergetool`.
 
 
 ### Protected archives
@@ -207,3 +212,33 @@ gpg -c important.data.txt
 # decrypt
 gpg important.data.txt.gpg
 ```
+
+
+### Stress test via DoS attack
+
+Using **ab** (Apache HTTP server benchmarking tool).
+Official docs: [link](https://httpd.apache.org/docs/2.4/programs/ab.html)
+
+```bash
+ab -k -c 350 -n 20000 example.com
+```
+
+For testing multiple URL's concurrently create a shell script with multiple `ab` calls:
+
+```bash
+#!/bin/sh
+
+ab -n 100 -c 10 example.com/login > test1.txt &
+ab -n 100 -c 10 example.com/news > test2.txt &
+```
+
+Using **Siege**:
+
+```bash
+siege -d10 -c50 example.com
+```
+
+
+### Bash-Snippets [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
+
+A collection of small bash scripts for heavy terminal users with no dependencies: [link](https://github.com/alexanderepstein/Bash-Snippets)
