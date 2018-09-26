@@ -123,6 +123,22 @@ sudo npm install http-server -g
 http-server
 ```
 
+Find out MAC address by using IP address:
+
+```bash
+arping -I eth0 -c 2 destination_ip
+```
+
+Using `arp-scan` allows to discover all IP hosts on the local network, including those that block all IP traffic such as firewalls and systems with ingress filters.
+It works on Ethernet and 802.11 wireless networks. Requires root privilege.
+
+```bash
+# "eth0" is used for example, in reality the network interface name depends on the OS, the network type (Ethernet, Wireless Etc), on the interface card type etc.
+sudo arp-scan --interface=eth0 --localnet
+# or
+sudo arp-scan --localnet
+```
+
 
 ### Diff between files/folders
 
