@@ -12,6 +12,7 @@
 1. [Pumping .bash_aliases](#pumping-.bash_aliases)
 1. [Encrypt/decrypt a file](#encrypt/decrypt-a-file)
 1. [Stress test via DoS attack](#stress-test-via-dos-attack)
+1. [cURL cheatsheet](#curl-cheatsheet)
 1. [Bash-Snippets](#bash-snippets)
 
 
@@ -133,7 +134,7 @@ Using `arp-scan` allows to discover all IP hosts on the local network, including
 It works on Ethernet and 802.11 wireless networks. Requires root privilege.
 
 ```bash
-# "eth0" is used for example, in reality the network interface name depends on the OS, the network type (Ethernet, Wireless Etc), on the interface card type etc.
+# "eth0" is used for example, in reality the network interface name depends on the OS, the network type and other factors
 sudo arp-scan --interface=eth0 --localnet
 # or
 sudo arp-scan --localnet
@@ -253,6 +254,17 @@ Using **Siege**:
 ```bash
 siege -d10 -c50 example.com
 ```
+
+
+### cURL cheatsheet
+
+Debug options `--verbose` (`-v`), `--trace`, `--trace-ascii`, `--trace-time` allow to get more details as they show EVERYTHING **curl** sends and receives.
+
+```bash
+# use "-" as filename to have the output sent to stdout
+curl --trace-ascii - http://www.example.com/
+```
+
 
 
 ### Bash-Snippets [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
