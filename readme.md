@@ -265,6 +265,13 @@ Debug options `--verbose` (`-v`), `--trace`, `--trace-ascii`, `--trace-time` all
 curl --trace-ascii - http://www.example.com/
 ```
 
+Make GET request, only print the response headers and display the time it took:
+
+```bash
+curl -sIX GET -w "Total time: %{time_total} s\n" www.example.com
+# or
+curl -o /dev/null -D- www.example.com
+```
 
 
 ### Bash-Snippets [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
