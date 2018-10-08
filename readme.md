@@ -273,6 +273,18 @@ curl -sIX GET -w "Total time: %{time_total} s\n" www.example.com
 curl -o /dev/null -D- www.example.com
 ```
 
+Typical usage, send GET request with headers:
+
+```bash
+curl -X GET 'http://www.example.com' -H 'Accept-Language: en' -H 'Authorization: Bearer A0v7mf98JJvWQTEbpEYNTt0uw2q0yl6P' -H 'Content-Type: application/json'
+```
+
+Identify the HTTP Options available on the target URL:
+
+```bash
+curl -v -X OPTIONS http://www.example.com/
+```
+
 
 ### Bash-Snippets [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
 
