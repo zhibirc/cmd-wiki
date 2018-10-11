@@ -13,7 +13,8 @@
 1. [Encrypt/decrypt a file](#encrypt/decrypt-a-file)
 1. [Stress test via DoS attack](#stress-test-via-dos-attack)
 1. [cURL cheatsheet](#curl-cheatsheet)
-1. [Installing programs from sources](#)
+1. [Installing programs from sources](#installing-programs-from-sources)
+1. [Installing Oracle Java 8 / 9](#installing-oracle-java-8-/-9)
 1. [Bash-Snippets](#bash-snippets)
 
 
@@ -299,6 +300,19 @@ make
 sudo make install
 # clean up any temp files, optional
 make clean
+```
+
+
+### Installing Oracle Java 8 / 9
+
+```bash
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt update; sudo apt install oracle-java8-installer
+# or replace oracle-java8-installer with oracle-java9-installer to install Java 9
+# check the Java version
+javac -version
+# set Java environment variables
+sudo apt install oracle-java8-set-default
 ```
 
 
