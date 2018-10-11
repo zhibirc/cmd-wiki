@@ -13,6 +13,7 @@
 1. [Encrypt/decrypt a file](#encrypt/decrypt-a-file)
 1. [Stress test via DoS attack](#stress-test-via-dos-attack)
 1. [cURL cheatsheet](#curl-cheatsheet)
+1. [Wget basics](#wget-basics)
 1. [Installing programs from sources](#installing-programs-from-sources)
 1. [Installing Oracle Java 8 / 9](#installing-oracle-java-8-/-9)
 1. [Bash-Snippets](#bash-snippets)
@@ -286,6 +287,24 @@ Identify the HTTP options available on the target URL, including the various typ
 ```bash
 curl -v -X OPTIONS http://www.example.com/
 ```
+
+
+### Wget basics
+
+Downloading an entire Web Site:
+
+```bash
+# download the entire Web site
+# convert links so that they work locally, off-line
+# download all the files that are necessary to properly display a given HTML page
+# guarantee that only the files below a certain hierarchy will be downloaded
+# wait the specified number of seconds between the retrievals
+# cause the time between requests to vary between 0.5 and 1.5 * wait (see above) seconds
+wget --recursive --convert-links --page-requisites --no-parent --wait=5 --random-wait http://www.example.com/
+```
+
+You may want to specify `--user-agent` option which allows you to change the "**User-Agent**" line.
+Specifying empty user agent with `--user-agent=""` instructs Wget not to send the "**User-Agent**" header in HTTP requests.
 
 
 ### Installing programs from sources
