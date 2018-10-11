@@ -13,6 +13,7 @@
 1. [Encrypt/decrypt a file](#encrypt/decrypt-a-file)
 1. [Stress test via DoS attack](#stress-test-via-dos-attack)
 1. [cURL cheatsheet](#curl-cheatsheet)
+1. [Installing programs from sources](#)
 1. [Bash-Snippets](#bash-snippets)
 
 
@@ -279,10 +280,25 @@ Typical usage, send GET request with headers:
 curl -X GET 'http://www.example.com' -H 'Accept-Language: en' -H 'Authorization: Bearer A0v7mf98JJvWQTEbpEYNTt0uw2q0yl6P' -H 'Content-Type: application/json'
 ```
 
-Identify the HTTP Options available on the target URL:
+Identify the HTTP options available on the target URL, including the various types of allowed HTTP methods:
 
 ```bash
 curl -v -X OPTIONS http://www.example.com/
+```
+
+
+### Installing programs from sources
+
+```bash
+tar xzvf program.sources.tar.gz
+cd program.sources
+# configure and compile
+# if README is present, read it first
+./configure
+make
+sudo make install
+# clean up any temp files, optional
+make clean
 ```
 
 
