@@ -282,6 +282,14 @@ Typical usage, send GET request with headers:
 curl -X GET 'http://www.example.com' -H 'Accept-Language: en' -H 'Authorization: Bearer A0v7mf98JJvWQTEbpEYNTt0uw2q0yl6P' -H 'Content-Type: application/json'
 ```
 
+POST request format depends on content type (`application/x-www-form-urlencoded` is the default):
+
+```bash
+# or simply -d
+curl --data "param1=value1&param2=value2" -X POST https://example.com/resource.cgi
+curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" -X POST http://www.example.com
+```
+
 Identify the HTTP options available on the target URL, including the various types of allowed HTTP methods:
 
 ```bash
