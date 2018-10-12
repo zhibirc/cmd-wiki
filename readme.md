@@ -16,6 +16,7 @@
 1. [Wget basics](#wget-basics)
 1. [Installing programs from sources](#installing-programs-from-sources)
 1. [Installing Oracle Java 8 / 9](#installing-oracle-java-8-/-9)
+1. [FFmpeg sweets](#ffmpeg-sweets)
 1. [Bash-Snippets](#bash-snippets)
 
 
@@ -340,6 +341,17 @@ sudo apt update; sudo apt install oracle-java8-installer
 javac -version
 # set Java environment variables
 sudo apt install oracle-java8-set-default
+```
+
+
+### FFmpeg sweets
+
+Convert MP4 video to MP3 audio:
+
+```bash
+ffmpeg -i video.mp4 audio.mp3
+# or, with additional options
+ffmpeg -i video.mp4 -b:a 192k -vn audio.mp3
 ```
 
 
