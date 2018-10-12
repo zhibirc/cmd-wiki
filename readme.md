@@ -354,6 +354,12 @@ ffmpeg -i video.mp4 audio.mp3
 ffmpeg -i video.mp4 -b:a 192k -vn audio.mp3
 ```
 
+Split a video into images:
+
+```bash
+mkdir video; ffmpeg -i video.mp4 image%d.jpg
+```
+
 
 ### Bash-Snippets [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
 
