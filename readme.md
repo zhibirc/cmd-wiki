@@ -360,6 +360,16 @@ Split a video into images:
 mkdir video; ffmpeg -i video.mp4 image%d.jpg
 ```
 
+Reduce the file size of MP4 file:
+
+```bash
+# get file information
+ffmpeg -i video.mp4
+# 497 kb/s, 30 fps, 30 tbr, 15360 tbn, 60 tbc (default)
+# reduce bitrate by approximately half
+ffmpeg -i video.mp4 -b 248k video.out.mp4
+```
+
 
 ### Bash-Snippets [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
 
