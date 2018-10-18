@@ -185,7 +185,7 @@ so don't use it for data with limited access.
 It's possible to put a lot of useful shortcuts in `~/.bash_aliases` which can improve work effectiveness:
 
 ```bash
-# general aliases
+# General aliases
 alias df="df -h"
 alias du="du -c -h"
 alias mkdir="mkdir -pv"
@@ -220,6 +220,12 @@ alias grr='git remote rm'
 alias gpu='git pull'
 alias gcl='git clone'
 alias gta='git tag -a -m'
+
+# Install NPM packages in Docker container to prevent security flaws
+alias dnpm='docker run -it --rm -u=$UID:$(id -g $USER) -v "$PWD":/npm -w /npm node npm'
+alias dnpx='docker run -it --rm -u=$UID:$(id -g $USER) -v "$PWD":/npm -w /npm node npx'
+alias dnode='docker run -it --rm -u=$UID:$(id -g $USER) -v "$PWD":/npm -w /npm node node'
+alias dyarn='docker run -it --rm -u=$UID:$(id -g $USER) -v "$PWD":/npm -w /npm node yarn'
 ```
 
 
