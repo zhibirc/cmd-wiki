@@ -346,6 +346,15 @@ sudo apt install oracle-java8-set-default
 
 ### FFmpeg sweets
 
+Get metadata information from media file:
+
+```bash
+# work on any file FFmpeg supports
+ffmpeg -i video.mp4 -hide_banner
+# advanced method using FFprobe, multimedia stream analyzer
+ffprobe -v error -show_format -show_streams video.mp4
+```
+
 Convert MP4 video to MP3 audio:
 
 ```bash
