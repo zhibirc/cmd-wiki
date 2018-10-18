@@ -4,20 +4,20 @@
 ## Table of Contents
 
 1. [Samba Setup](#samba-setup)
-1. [Samba Share Access (unrestricted)](#samba-share-access-(unrestricted))
-1. [Samba Share Access (restricted)](#samba-share-access-(restricted))
+1. [Samba Share Access (unrestricted)](#samba-share-access-unrestricted)
+1. [Samba Share Access (restricted)](#samba-share-access-restricted)
 1. [Network goodies](#network-goodies)
-1. [Diff between files/folders](#diff-between-files/folders)
+1. [Diff between files/folders](#diff-between-filesfolders)
 1. [Protected archives](#protected-archives)
-1. [Pumping .bash_aliases](#pumping-.bash_aliases)
-1. [Encrypt/decrypt a file](#encrypt/decrypt-a-file)
+1. [Pumping .bash_aliases](#pumping-bash_aliases)
+1. [Encrypt/decrypt a file](#encryptdecrypt-a-file)
 1. [Stress test via DoS attack](#stress-test-via-dos-attack)
 1. [cURL cheatsheet](#curl-cheatsheet)
 1. [Wget basics](#wget-basics)
 1. [Installing programs from sources](#installing-programs-from-sources)
-1. [Installing Oracle Java 8 / 9](#installing-oracle-java-8-/-9)
+1. [Installing Oracle Java 8 / 9](#installing-oracle-java-8--9)
 1. [FFmpeg sweets](#ffmpeg-sweets)
-1. [Bash-Snippets](#bash-snippets)
+1. [Bash-Snippets](#bash-snippets-)
 
 
 ### Samba Setup
