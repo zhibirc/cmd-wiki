@@ -401,6 +401,8 @@ file -i file.name
 identify -verbose file.name 
 ```
 
+In case of media file container used by a multimedia stream use information from [FFmpeg sweets](#ffmpeg-sweets).
+
 
 ### Bash-Snippets [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
 
