@@ -1,5 +1,6 @@
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](license.md)
 [![Maintenance](https://img.shields.io/maintenance/yes/2019.svg?style=flat-square)]()
+[![Platform](https://img.shields.io/badge/OS-GNU%2FLinux-yellowgreen.svg?style=flat-square)]()
 
 ## Table of Contents
 
