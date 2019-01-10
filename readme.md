@@ -17,6 +17,7 @@
 1. [Installing programs from sources](#installing-programs-from-sources)
 1. [Installing Oracle Java 8 / 9](#installing-oracle-java-8--9)
 1. [FFmpeg sweets](#ffmpeg-sweets)
+1. [Getting file info](#ffmpeg-sweets)
 1. [Bash-Snippets](#bash-snippets-)
 
 
@@ -383,6 +384,21 @@ ffmpeg -i video.mp4
 # 497 kb/s, 30 fps, 30 tbr, 15360 tbn, 60 tbc (default)
 # reduce bitrate by approximately half
 ffmpeg -i video.mp4 -b 248k video.out.mp4
+```
+
+
+### Getting file info
+
+```bash
+# display file or file system status
+stat file.name
+# get basic file info, recognize the type of data contained in
+file file.name
+# or, for getting mime type
+file -i file.name
+# read image metadata, ImageMagick is required
+# get format and characteristics of one or more image files
+identify -verbose file.name 
 ```
 
 
