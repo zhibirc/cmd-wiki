@@ -17,7 +17,7 @@
 1. [Installing programs from sources](#installing-programs-from-sources)
 1. [Installing Oracle Java 8 / 9](#installing-oracle-java-8--9)
 1. [FFmpeg sweets](#ffmpeg-sweets)
-1. [Getting file info](#ffmpeg-sweets)
+1. [Getting file info](#getting-file-info)
 1. [Bash-Snippets](#bash-snippets-)
 
 
