@@ -25,7 +25,7 @@
 
 ### Git tips
 
-<details><summary>⤸</summary>
+<details><summary>:speech_balloon:</summary>
 
 Check if merge conflicts will occur before actual merging:
 
