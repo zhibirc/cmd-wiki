@@ -25,7 +25,7 @@
 
 ### Git tips
 
-<details><summary>:hatched_chick:</summary>
+<details><summary>⤸</summary>
 
 Check if merge conflicts will occur before actual merging:
 
