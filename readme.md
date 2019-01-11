@@ -25,6 +25,17 @@
 
 ### Git tips
 
+<details><summary>:hatched_chick:</summary>
+
+Check if merge conflicts will occur before actual merging:
+
+```bash
+git merge <branch> --no-ff --no-commit
+git merge --abort
+```
+
+</details>
+
 
 ### Samba Setup
 
