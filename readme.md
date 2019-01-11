@@ -4,6 +4,7 @@
 
 ## Table of Contents
 
+1. [Git tips](#git-tips)
 1. [Samba Setup](#samba-setup)
 1. [Samba Share Access (unrestricted)](#samba-share-access-unrestricted)
 1. [Samba Share Access (restricted)](#samba-share-access-restricted)
@@ -20,6 +21,9 @@
 1. [FFmpeg sweets](#ffmpeg-sweets)
 1. [Getting file info](#getting-file-info)
 1. [Bash-Snippets](#bash-snippets-)
+
+
+### Git tips
 
 
 ### Samba Setup
