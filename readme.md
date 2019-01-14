@@ -37,6 +37,18 @@ git merge <branch> --no-ff --no-commit
 git merge --abort
 ```
 
+Discard all unstaged changes:
+
+```bash
+git checkout -- .
+```
+
+Create branch from particular commit:
+
+```bash
+git checkout -b <branch name> <commit hash>
+```
+
 </details>
 
 
