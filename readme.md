@@ -49,6 +49,18 @@ Create branch from particular commit:
 git checkout -b <branch name> <commit hash>
 ```
 
+Create a local branch that tracks a remote branch:
+
+```bash
+git checkout <remote branch name>
+```
+
+Add/stage (modified and deleted files, new files are not affected) and commit in one command:
+
+```bash
+git commit -am "commit message"
+```
+
 </details>
 
 
