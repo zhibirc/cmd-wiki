@@ -429,6 +429,12 @@ ffmpeg -i video.mp4
 ffmpeg -i video.mp4 -b 248k video.out.mp4
 ```
 
+Crop video file:
+
+```bash
+ffmpeg -i video.mp4 -ss 00:00:03 -t 00:00:08 -async 1 fragment.mp4
+```
+
 
 ### Getting file info
 
