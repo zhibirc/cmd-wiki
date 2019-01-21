@@ -61,6 +61,13 @@ Add/stage (modified and deleted files, new files are not affected) and commit in
 git commit -am "commit message"
 ```
 
+Automate formation of release announcements:
+
+```bash
+git shortlog -s | awk -F\\t '{print $2}' > contributors.md
+git shortlog --no-merges | awk -F '[[:alnum:] ]+ \\([0-9]' '{print $1}' | grep . > changelog.md
+```
+
 </details>
 
 
