@@ -68,6 +68,12 @@ git shortlog -s | awk -F\\t '{print $2}' > contributors.md
 git shortlog --no-merges | awk -F '[[:alnum:] ]+ \\([0-9]' '{print $1}' | grep . > changelog.md
 ```
 
+Get a nice list of actual different commits not shared between the branches:
+
+```bash
+git log --left-right --graph --cherry-pick --oneline master..develop
+```
+
 </details>
 
 
