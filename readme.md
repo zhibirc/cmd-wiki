@@ -5,6 +5,7 @@
 ## Table of Contents
 
 1. [Git tips](#git-tips)
+1. [Bash usefulness](#bash-usefulness)
 1. [Samba Setup](#samba-setup)
 1. [Samba Share Access (unrestricted)](#samba-share-access-unrestricted)
 1. [Samba Share Access (restricted)](#samba-share-access-restricted)
@@ -77,9 +78,16 @@ git log --left-right --graph --cherry-pick --oneline master..develop
 </details>
 
 
-### Samba Setup
+### Bash usefulness
 
-Actual for **Ubuntu 16.04**
+Remove multiple sub-folders:
+
+```bash
+find . -type d -name node_modules -prune -exec rm -rf '{}' \;
+```
+
+
+### Samba Setup
 
 ```bash
 sudo apt-get install -y samba samba-common python-glade2 system-config-samba
