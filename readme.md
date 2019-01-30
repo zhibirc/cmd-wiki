@@ -6,9 +6,9 @@
 
 1. [Git tips](#git-tips)
 1. [Bash usefulness](#bash-usefulness)
-1. [Samba Setup](#samba-setup)
-1. [Samba Share Access (unrestricted)](#samba-share-access-unrestricted)
-1. [Samba Share Access (restricted)](#samba-share-access-restricted)
+1. [Samba setup](#samba-setup)
+1. [Samba share access (unrestricted)](#samba-share-access-unrestricted)
+1. [Samba share access (restricted)](#samba-share-access-restricted)
 1. [Network goodies](#network-goodies)
 1. [Diff between files/folders](#diff-between-filesfolders)
 1. [Protected archives](#protected-archives)
@@ -21,6 +21,7 @@
 1. [Installing Oracle Java 8 / 9](#installing-oracle-java-8--9)
 1. [FFmpeg sweets](#ffmpeg-sweets)
 1. [Getting file info](#getting-file-info)
+1. [Generate a random password](#generate-a-random-password)
 1. [Bash-Snippets](#bash-snippets-)
 
 
@@ -87,7 +88,7 @@ find . -type d -name node_modules -prune -exec rm -rf '{}' \;
 ```
 
 
-### Samba Setup
+### Samba setup
 
 ```bash
 sudo apt-get install -y samba samba-common python-glade2 system-config-samba
@@ -108,7 +109,7 @@ dns proxy = no
 ```
 
 
-### Samba Share Access (unrestricted)
+### Samba share access (unrestricted)
 
 ```bash
 sudo mkdir -p /samba/share
@@ -131,7 +132,7 @@ sudo service smbd restart
 ```
 
 
-### Samba Share Access (restricted)
+### Samba share access (restricted)
 
 ```bash
 sudo mkdir -p /samba/share/secured
@@ -472,6 +473,11 @@ identify -verbose file.name
 ```
 
 In case of media file container used by a multimedia stream use information from [FFmpeg sweets](#ffmpeg-sweets).
+
+
+### Generate a random password
+
+
 
 
 ### Bash-Snippets [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
