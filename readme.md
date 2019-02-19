@@ -54,7 +54,8 @@ git checkout -b <branch name> <commit hash>
 Create a local branch that tracks a remote branch:
 
 ```bash
-git checkout <remote branch name>
+# starting to work on an existing remote branch (e.g. upstream/develop)
+git checkout --track <remote branch name>
 ```
 
 Add/stage (modified and deleted files, new files are not affected) and commit in one command:
