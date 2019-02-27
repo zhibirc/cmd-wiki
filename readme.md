@@ -436,6 +436,12 @@ ffmpeg -i video.mp4 audio.mp3
 ffmpeg -i video.mp4 -b:a 192k -vn audio.mp3
 ```
 
+Convert RTSP stream to HLS:
+
+```bash
+ffmpeg -i rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov -fflags flush_packets -max_delay 2 -flags -global_header -hls_time 2 -hls_list_size 3 -vcodec copy -y video.m3u8
+```
+
 Split a video into images:
 
 ```bash
