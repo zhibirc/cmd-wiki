@@ -77,6 +77,18 @@ Get a nice list of actual different commits not shared between the branches:
 git log --left-right --graph --cherry-pick --oneline master..develop
 ```
 
+Housekeeping tools:
+
+```bash
+# cleans up unreachable or "orphaned" Git objects
+
+# what is set to be pruned but not actually prune it
+git prune --dry-run --verbose
+
+# prune and display output of all objects and actions taken by it
+git prune --progress
+```
+
 </details>
 
 
