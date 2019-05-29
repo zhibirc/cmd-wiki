@@ -22,6 +22,7 @@
 1. [FFmpeg sweets](#ffmpeg-sweets)
 1. [Getting file info](#getting-file-info)
 1. [Generate a random password](#generate-a-random-password)
+1. [Cool cheatsheets / tutorials](#cool-cheatsheets--tutorials)
 1. [Bash-Snippets](#bash-snippets-)
 
 
@@ -515,6 +516,9 @@ In case of media file container used by a multimedia stream use information from
 
 
 ### Generate a random password
+
+
+### Cool cheatsheets / tutorials
 
 
 
