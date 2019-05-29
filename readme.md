@@ -100,6 +100,26 @@ Remove multiple sub-folders:
 find . -type d -name node_modules -prune -exec rm -rf '{}' \;
 ```
 
+Find patters:
+
+```bash
+# find files containing a given text
+find . -type f -print0 | xargs -0 grep -l "search string"
+# "l" means that only the name of each input file with matched content will print
+grep -rl "search string" /
+
+# handle multiple search patterns
+
+grep -e hacker -e root -e admin /etc/passwd
+```
+
+Sometimes process (Apache, for example) prevents to start service on the same port (nginx, for example):
+
+```bash
+# end the conflict process
+sudo fuser -k 80/tcp
+```
+
 
 ### Samba setup
 
