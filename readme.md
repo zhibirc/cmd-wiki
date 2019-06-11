@@ -22,6 +22,7 @@
 1. [FFmpeg sweets](#ffmpeg-sweets)
 1. [Getting file info](#getting-file-info)
 1. [Generate a random password](#generate-a-random-password)
+1. [Amazon Web Services (AWS)](#amazon-web-services-aws)
 1. [Cool cheatsheets / tutorials](#cool-cheatsheets--tutorials)
 1. [Bash-Snippets](#bash-snippets-)
 
@@ -546,9 +547,10 @@ In case of media file container used by a multimedia stream use information from
 ### Generate a random password
 
 
+### Amazon Web Services (AWS)
+
+
 ### Cool cheatsheets / tutorials
-
-
 
 
 ### Bash-Snippets [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
