@@ -121,6 +121,34 @@ Sometimes process (Apache, for example) prevents to start service on the same po
 sudo fuser -k 80/tcp
 ```
 
+APT
+
+```bash
+# list all installed packages
+apt list --installed | less
+
+# list all ready-to-upgrade packages
+apt list --upgradeable | less
+
+# update list of available packages
+sudo apt update
+
+# upgrade the system by installing/upgrading packages
+sudo apt upgrade
+
+# search in package descriptions
+apt search <needle_name>
+
+# show package details
+apt show <package_name>
+
+# remove automatically all unused packages
+sudo apt autoremove
+
+# all-in-one upgrade system command
+sudo apt update && sudo apt upgrade -y
+```
+
 
 ### Samba setup
 
