@@ -549,6 +549,34 @@ In case of media file container used by a multimedia stream use information from
 
 ### Amazon Web Services (AWS)
 
+Setup:
+
+```bash
+sudo apt install awscli
+aws --version
+
+# configuring
+aws configure
+AWS Access Key ID [None]: <associated with an IAM user>
+AWS Secret Access Key [None]: <associated with an IAM user>
+Default region name [None]: <any available region>
+Default output format [None]: <json|text|table>
+
+# or configure the same for another user
+aws configure --profile <username> 
+```
+
+```bash
+# enable command-completion feature
+
+# locate the AWS Completer script, use this path in command below 
+which aws_completer
+
+# in ~/.bashrc
+complete -C '/usr/bin/aws_completer' aws
+source ~/.bashrc 
+```
+
 
 ### Cool cheatsheets / tutorials
 
