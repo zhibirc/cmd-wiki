@@ -6,6 +6,7 @@
 
 1. [Git tips](#git-tips)
 1. [Bash usefulness](#bash-usefulness)
+1. [Free Up Disk Space](#free-up-disk-space)
 1. [Samba setup](#samba-setup)
 1. [Samba share access (unrestricted)](#samba-share-access-unrestricted)
 1. [Samba share access (restricted)](#samba-share-access-restricted)
@@ -148,6 +149,25 @@ sudo apt autoremove
 
 # all-in-one upgrade system command
 sudo apt update && sudo apt upgrade -y
+```
+
+
+### Free Up Disk Space
+
+You can check the size of interested directory with `du -sh <directory>` preliminarily.
+
+```bash
+# clean the thumbnail cache
+rm -rf ~/.cache/thumbnails/*
+
+# remove packages that were automatically installed to satisfy dependencies for other packages and are now no longer needed
+sudo apt autoremove
+
+# clean the apt cache
+sudo apt-get clean
+
+# remove old, unused kernels, except for the last two - the current and the previous
+sudo purge-old-kernels
 ```
 
 
