@@ -24,7 +24,7 @@
 1. [Getting file info](#getting-file-info)
 1. [Generate a random password](#generate-a-random-password)
 1. [Amazon Web Services (AWS)](#amazon-web-services-aws)
-1. [Cool cheatsheets / tutorials](#cool-cheatsheets--tutorials)
+1. [Cool cheatsheets / tutorials / helper tools](#cool-cheatsheets--tutorials--helper-tools)
 1. [Bash-Snippets](#bash-snippets-)
 
 
@@ -598,7 +598,7 @@ source ~/.bashrc
 ```
 
 
-### Cool cheatsheets / tutorials
+### Cool cheatsheets / tutorials / helper tools
 
 * [Bash-hackers wiki](http://wiki.bash-hackers.org/) _(bash-hackers.org)_
 * [Shell vars](http://wiki.bash-hackers.org/syntax/shellvars) _(bash-hackers.org)_
