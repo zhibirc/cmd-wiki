@@ -22,6 +22,7 @@
 1. [Installing Oracle Java 8 / 9](#installing-oracle-java-8--9)
 1. [FFmpeg sweets](#ffmpeg-sweets)
 1. [Getting file info](#getting-file-info)
+1. [Getting hardware info](#getting-hardware-info)
 1. [Generate a random password](#generate-a-random-password)
 1. [Amazon Web Services (AWS)](#amazon-web-services-aws)
 1. [Cool cheatsheets / tutorials / helper tools](#cool-cheatsheets--tutorials--helper-tools)
@@ -562,6 +563,38 @@ identify -verbose file.name
 ```
 
 In case of media file container used by a multimedia stream use information from [FFmpeg sweets](#ffmpeg-sweets).
+
+
+### Getting hardware info
+
+```bash
+# overall
+uname -a
+
+sudo dmidecode
+
+sudo lshw | less
+sudo lshw -html > system_info.html
+
+# list USB devices
+lsusb
+
+# list all PCI devices
+lspci
+
+# CPU
+cat /proc/cpuinfo
+
+# RAM
+cat /proc/meminfo
+
+free
+
+# HDD
+sudo fdisk -l
+```
+
+Or, if you prefer some GUI tool, use `hardinfo` (`sudo apt install hardinfo`).
 
 
 ### Generate a random password
