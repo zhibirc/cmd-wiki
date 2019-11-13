@@ -567,15 +567,22 @@ In case of media file container used by a multimedia stream use information from
 
 ### Getting hardware info
 
+Overall:
+
 ```bash
-# overall
 uname -a
 
-sudo dmidecode
+sudo dmidecode | less
 
 sudo lshw | less
-sudo lshw -html > system_info.html
 
+# pretty print
+sudo lshw -html > system_info.html
+```
+
+Specific:
+
+```bash
 # list USB devices
 lsusb
 
@@ -584,13 +591,14 @@ lspci
 
 # CPU
 cat /proc/cpuinfo
+# or more precise form
+lscpu
 
 # RAM
 cat /proc/meminfo
-
 free
 
-# HDD
+# SSD/HDD
 sudo fdisk -l
 ```
 
