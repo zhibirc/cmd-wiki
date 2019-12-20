@@ -152,6 +152,24 @@ sudo apt autoremove
 sudo apt update && sudo apt upgrade -y
 ```
 
+Change/setup bash custom prompt (PS1) with Git branch displaying (if exists). Specify this in `~/.bashrc` and run `source ~/.bashrc` for applying changes:
+
+```bash
+git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
+}
+
+COLOR_USER='\[\e[1;32m\]'
+COLOR_PATH='\[\e[00;36m\]'
+COLOR_RESET='\[\e[0m\]'
+
+PS1="${COLOR_RESET}${COLOR_USER}\u▶${COLOR_RESET} ${COLOR_PATH}\w ${COLOR_USER}\[\033[00;32m\]\$(git_branch)\[\033[00m\] $ ${COLOR_RESET}"
+```
+
+Result of the above is something like:
+
+![PS1 example](assets/images/ps1.png)
+
 
 ### Free Up Disk Space
 
