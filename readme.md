@@ -1,5 +1,5 @@
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](license.md)
-[![Maintenance](https://img.shields.io/maintenance/yes/2019.svg?style=flat-square)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2020.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/OS-GNU%2FLinux-yellowgreen.svg?style=flat-square)]()
 
 ## Table of Contents
@@ -104,7 +104,7 @@ Remove multiple sub-folders:
 find . -type d -name node_modules -prune -exec rm -rf '{}' \;
 ```
 
-Find patters:
+Find patterns:
 
 ```bash
 # find files containing a given text
@@ -113,7 +113,6 @@ find . -type f -print0 | xargs -0 grep -l "search string"
 grep -rl "search string" /
 
 # handle multiple search patterns
-
 grep -e hacker -e root -e admin /etc/passwd
 ```
 
@@ -169,6 +168,34 @@ PS1="${COLOR_RESET}${COLOR_USER}\u▶${COLOR_RESET} ${COLOR_PATH}\w ${COLOR_USER
 Result of the above is something like:
 
 ![PS1 example](assets/images/ps1.png)
+
+Fast checking of PHP SSL support:
+
+```bash
+echo '<?php phpinfo(); ?>' | php 2>&1 |grep -i ssl
+```
+
+Installing and basic setup of SSH Server:
+
+```bash
+sudo apt install openssh-server
+
+# check status
+service --status-all | grep ssh
+# or
+systemctl list-units | grep ssh
+
+# config in /etc/ssh/sshd_config
+
+# help
+man sshd_config
+
+# after making changes to the /etc/ssh/sshd_config file, save the file, and restart the sshd server to effect the changes using the following command:
+sudo systemctl restart sshd.service
+
+# in case of using SSH keys don't forget to copy the id_rsa.pub file to the remote host and append it to ~/.ssh/authorized_keys, then give it the right permissions:
+chmod 600 .ssh/authorized_keys
+```
 
 
 ### Free Up Disk Space
