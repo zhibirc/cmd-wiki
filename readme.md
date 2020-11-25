@@ -5,6 +5,7 @@
 ## Table of Contents
 
 1. [Git tips](#git-tips)
+1. [NPM helpers](#npm-helpers)
 1. [Bash usefulness](#bash-usefulness)
 1. [Free Up Disk Space](#free-up-disk-space)
 1. [Samba setup](#samba-setup)
@@ -94,6 +95,16 @@ git prune --progress
 ```
 
 </details>
+
+
+### NPM helpers
+
+Usual/typical installation for newly created front-end:
+
+```bash
+npm init -y
+npm i webpack webpack-cli typescript ts-loader html-webpack-plugin mocha chai -D
+```
 
 
 ### Bash usefulness
@@ -675,7 +686,7 @@ aws configure --profile <username>
 ```bash
 # enable command-completion feature
 
-# locate the AWS Completer script, use this path in command below 
+# locate the AWS Completer script, use this path in command below
 which aws_completer
 
 # in ~/.bashrc
