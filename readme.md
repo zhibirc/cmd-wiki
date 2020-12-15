@@ -6,7 +6,7 @@
 
 1. [Git tips](#git-tips)
 1. [NPM helpers](#npm-helpers)
-1. [Bash usefulness](#bash-usefulness)
+1. [Shell usefulness](#shell-usefulness)
 1. [Free Up Disk Space](#free-up-disk-space)
 1. [Samba setup](#samba-setup)
 1. [Samba share access (unrestricted)](#samba-share-access-unrestricted)
@@ -39,52 +39,52 @@
 
 Check if merge conflicts will occur before actual merging:
 
-```bash
+```shell script
 git merge <branch> --no-ff --no-commit
 git merge --abort
 ```
 
 Discard all unstaged changes:
 
-```bash
+```shell script
 git checkout -- .
 ```
 
 Create branch from particular commit:
 
-```bash
+```shell script
 git checkout -b <branch name> <commit hash>
 ```
 
 Create a local branch that tracks a remote branch:
 
-```bash
+```shell script
 # starting to work on an existing remote branch (e.g. upstream/develop)
 git checkout --track <remote branch name>
 ```
 
 Add/stage (modified and deleted files, new files are not affected) and commit in one command:
 
-```bash
+```shell script
 git commit -am "commit message"
 ```
 
 Automate formation of release announcements:
 
-```bash
+```shell script
 git shortlog -s | awk -F\\t '{print $2}' > contributors.md
 git shortlog --no-merges | awk -F '[[:alnum:] ]+ \\([0-9]' '{print $1}' | grep . > changelog.md
 ```
 
 Get a nice list of actual different commits not shared between the branches:
 
-```bash
+```shell script
 git log --left-right --graph --cherry-pick --oneline master..develop
 ```
 
 Housekeeping tools:
 
-```bash
+```shell script
 # cleans up unreachable or "orphaned" Git objects
 
 # what is set to be pruned but not actually prune it
@@ -101,23 +101,29 @@ git prune --progress
 
 Usual/typical installation for newly created front-end:
 
-```bash
+```shell script
 npm init -y
 npm i webpack webpack-cli typescript ts-loader html-webpack-plugin mocha chai -D
 ```
 
 
-### Bash usefulness
+### Shell usefulness
+
+Check which init system your platform uses (**systemd** (`systemctl` command), or older **System V** (which uses the `service` command)):
+
+```shell script
+ps --no-headers -o comm 1
+```
 
 Remove multiple sub-folders:
 
-```bash
+```shell script
 find . -type d -name node_modules -prune -exec rm -rf '{}' \;
 ```
 
 Find patterns:
 
-```bash
+```shell script
 # find files containing a given text
 find . -type f -print0 | xargs -0 grep -l "search string"
 # "l" means that only the name of each input file with matched content will print
@@ -129,14 +135,14 @@ grep -e hacker -e root -e admin /etc/passwd
 
 Sometimes process (Apache, for example) prevents to start service on the same port (nginx, for example):
 
-```bash
+```shell script
 # end the conflict process
 sudo fuser -k 80/tcp
 ```
 
 APT
 
-```bash
+```shell script
 # list all installed packages
 apt list --installed | less
 
@@ -164,7 +170,7 @@ sudo apt update && sudo apt upgrade -y
 
 Change/setup bash custom prompt (PS1) with Git branch displaying (if exists). Specify this in `~/.bashrc` and run `source ~/.bashrc` for applying changes:
 
-```bash
+```shell script
 git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
 }
@@ -182,13 +188,13 @@ Result of the above is something like:
 
 Fast checking of PHP SSL support:
 
-```bash
+```shell script
 echo '<?php phpinfo(); ?>' | php 2>&1 |grep -i ssl
 ```
 
 Installing and basic setup of SSH Server:
 
-```bash
+```shell script
 sudo apt install openssh-server
 
 # check status
@@ -213,7 +219,7 @@ chmod 600 .ssh/authorized_keys
 
 You can check the size of interested directory with `du -sh <directory>` preliminarily.
 
-```bash
+```shell script
 # clean the thumbnail cache
 rm -rf ~/.cache/thumbnails/*
 
@@ -230,7 +236,7 @@ sudo purge-old-kernels
 
 ### Samba setup
 
-```bash
+```shell script
 sudo apt-get install -y samba samba-common python-glade2 system-config-samba
 sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
 sudo vi /etc/samba/smb.conf
@@ -251,7 +257,7 @@ dns proxy = no
 
 ### Samba share access (unrestricted)
 
-```bash
+```shell script
 sudo mkdir -p /samba/share
 cd /samba
 sudo chmod -R 0755 share
@@ -267,14 +273,14 @@ guest ok = yes
 read only = no
 ```
 
-```bash
+```shell script
 sudo service smbd restart
 ```
 
 
 ### Samba share access (restricted)
 
-```bash
+```shell script
 sudo mkdir -p /samba/share/secured
 sudo addgroup securedgroup
 cd /samba/share
@@ -284,7 +290,7 @@ sudo usermod -a -G securedgroup zhibirc
 sudo smbpasswd -a zhibirc
 ```
 
-```bash
+```shell script
 sudo vi /etc/samba/smb.conf
 ```
 
@@ -298,7 +304,7 @@ writable = yes
 browsable = yes
 ```
 
-```bash
+```shell script
 sudo service smbd restart
 ```
 
@@ -307,25 +313,25 @@ sudo service smbd restart
 
 Retrieve list of Samba master browser(s):
 
-```bash
+```shell script
 nmblookup -M -- -
 ```
 
 Show NFS exports, like the ```showmount -e``` command:
 
-```bash
+```shell script
 nmap -sV --script=nfs-showmount 127.0.0.1
 ```
 
 Mapping processes to system ports they listen for:
 
-```bash
+```shell script
 sudo netstat -tpln
 ```
 
 Serve folder:
 
-```bash
+```shell script
 python -m SimpleHTTPServer 8080
 # or
 python3 -m http.server 8080
@@ -336,14 +342,14 @@ http-server
 
 Find out MAC address by using IP address:
 
-```bash
+```shell script
 arping -I eth0 -c 2 destination_ip
 ```
 
 Using `arp-scan` allows to discover all IP hosts on the local network, including those that block all IP traffic such as firewalls and systems with ingress filters.
 It works on Ethernet and 802.11 wireless networks. Requires root privilege.
 
-```bash
+```shell script
 # "eth0" is used for example, in reality the network interface name depends on the OS, the network type and other factors
 sudo arp-scan --interface=eth0 --localnet
 # or
@@ -353,7 +359,7 @@ sudo arp-scan --localnet
 
 ### Diff between files/folders
 
-```bash
+```shell script
 # install "Meld", visual diff and merge tool for files, folders and VCS
 sudo apt install meld
 # diff between files
@@ -369,13 +375,13 @@ Also it's possible and widely used to set **Meld** as a Git `difftool` and `merg
 
 Create encrypted ZIP archive (password as a plain text):
 
-```bash
+```shell script
 zip -P s0me_paSS -r protected.zip /home/sites/*/www/
 ```
 
 Create encrypted ZIP archive (request to enter password), different choices:
 
-```bash
+```shell script
 zip --encrypt protected.zip file_name
 zip --encrypt protected.zip file1 file2 file3
 zip --encrypt -r protected.zip /home/user/folder/
@@ -390,7 +396,7 @@ so don't use it for data with limited access.
 
 It's possible to put a lot of useful shortcuts in `~/.bash_aliases` which can improve work effectiveness:
 
-```bash
+```shell script
 # General aliases
 alias df="df -h"
 alias du="du -c -h"
@@ -439,7 +445,7 @@ alias dyarn='docker run -it --rm -u=$UID:$(id -g $USER) -v "$PWD":/npm -w /npm n
 
 Use the built-in **gpg** tool:
 
-```bash
+```shell script
 # encrypt
 gpg -c important.data.txt
 # decrypt
@@ -452,13 +458,13 @@ gpg important.data.txt.gpg
 Using **ab** (Apache HTTP server benchmarking tool).
 Official docs: [link](https://httpd.apache.org/docs/2.4/programs/ab.html)
 
-```bash
+```shell script
 ab -k -c 350 -n 20000 example.com
 ```
 
 For testing multiple URL's concurrently create a shell script with multiple `ab` calls:
 
-```bash
+```shell script
 #!/bin/sh
 
 ab -n 100 -c 10 example.com/login > test1.txt &
@@ -467,7 +473,7 @@ ab -n 100 -c 10 example.com/news > test2.txt &
 
 Using **Siege**:
 
-```bash
+```shell script
 siege -d10 -c50 example.com
 ```
 
@@ -476,14 +482,14 @@ siege -d10 -c50 example.com
 
 Debug options `--verbose` (`-v`), `--trace`, `--trace-ascii`, `--trace-time` allow to get more details as they show EVERYTHING **curl** sends and receives.
 
-```bash
+```shell script
 # use "-" as filename to have the output sent to stdout
 curl --trace-ascii - http://www.example.com/
 ```
 
 Make GET request, only print the response headers and display the time it took:
 
-```bash
+```shell script
 curl -sIX GET -w "Total time: %{time_total} s\n" www.example.com
 # or
 curl -o /dev/null -D- www.example.com
@@ -491,13 +497,13 @@ curl -o /dev/null -D- www.example.com
 
 Typical usage, send GET request with headers:
 
-```bash
+```shell script
 curl -X GET 'http://www.example.com' -H 'Accept-Language: en' -H 'Authorization: Bearer A0v7mf98JJvWQTEbpEYNTt0uw2q0yl6P' -H 'Content-Type: application/json'
 ```
 
 POST request format depends on content type (`application/x-www-form-urlencoded` is the default):
 
-```bash
+```shell script
 # or simply -d
 curl --data "param1=value1&param2=value2" -X POST https://example.com/resource.cgi
 curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" -X POST http://www.example.com
@@ -505,7 +511,7 @@ curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json"
 
 Identify the HTTP options available on the target URL, including the various types of allowed HTTP methods:
 
-```bash
+```shell script
 curl -v -X OPTIONS http://www.example.com/
 ```
 
@@ -514,7 +520,7 @@ curl -v -X OPTIONS http://www.example.com/
 
 Downloading an entire Web Site:
 
-```bash
+```shell script
 # download the entire Web site
 # convert links so that they work locally, off-line
 # download all the files that are necessary to properly display a given HTML page
@@ -530,7 +536,7 @@ Specifying empty user agent with `--user-agent=""` instructs Wget not to send th
 
 ### Installing programs from sources
 
-```bash
+```shell script
 tar xzvf program.sources.tar.gz
 cd program.sources
 # configure and compile
@@ -545,7 +551,7 @@ make clean
 
 ### Installing Oracle Java 8 / 9
 
-```bash
+```shell script
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt update; sudo apt install oracle-java8-installer
 # or replace oracle-java8-installer with oracle-java9-installer to install Java 9
@@ -560,7 +566,7 @@ sudo apt install oracle-java8-set-default
 
 Get metadata information from media file:
 
-```bash
+```shell script
 # work on any file FFmpeg supports
 ffmpeg -i video.mp4 -hide_banner
 # advanced method using FFprobe, multimedia stream analyzer
@@ -569,7 +575,7 @@ ffprobe -v error -show_format -show_streams video.mp4
 
 Convert MP4 video to MP3 audio:
 
-```bash
+```shell script
 ffmpeg -i video.mp4 audio.mp3
 # or, with additional options
 ffmpeg -i video.mp4 -b:a 192k -vn audio.mp3
@@ -577,19 +583,19 @@ ffmpeg -i video.mp4 -b:a 192k -vn audio.mp3
 
 Convert RTSP stream to HLS:
 
-```bash
+```shell script
 ffmpeg -i rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov -fflags flush_packets -max_delay 2 -flags -global_header -hls_time 2 -hls_list_size 3 -vcodec copy -y video.m3u8
 ```
 
 Split a video into images:
 
-```bash
+```shell script
 mkdir video; ffmpeg -i video.mp4 image%d.jpg
 ```
 
 Reduce the file size of MP4 file:
 
-```bash
+```shell script
 # get file information
 ffmpeg -i video.mp4
 # 497 kb/s, 30 fps, 30 tbr, 15360 tbn, 60 tbc (default)
@@ -599,14 +605,14 @@ ffmpeg -i video.mp4 -b 248k video.out.mp4
 
 Crop video file:
 
-```bash
+```shell script
 ffmpeg -i video.mp4 -ss 00:00:03 -t 00:00:08 -async 1 fragment.mp4
 ```
 
 
 ### Getting file info
 
-```bash
+```shell script
 # display file or file system status
 stat file.name
 # get basic file info, recognize the type of data contained in
@@ -625,7 +631,7 @@ In case of media file container used by a multimedia stream use information from
 
 Overall:
 
-```bash
+```shell script
 uname -a
 
 sudo dmidecode | less
@@ -638,7 +644,7 @@ sudo lshw -html > system_info.html
 
 Specific:
 
-```bash
+```shell script
 # list USB devices
 lsusb
 
@@ -668,7 +674,7 @@ Or, if you prefer some GUI tool, use `hardinfo` (`sudo apt install hardinfo`).
 
 Setup:
 
-```bash
+```shell script
 sudo apt install awscli
 aws --version
 
@@ -683,7 +689,7 @@ Default output format [None]: <json|text|table>
 aws configure --profile <username> 
 ```
 
-```bash
+```shell script
 # enable command-completion feature
 
 # locate the AWS Completer script, use this path in command below
