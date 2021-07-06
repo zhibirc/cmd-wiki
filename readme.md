@@ -1,11 +1,12 @@
+[![Wiki](https://img.shields.io/badge/wiki-knowledge--base-orange)]()
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](license.md)
-[![Maintenance](https://img.shields.io/maintenance/yes/2020.svg?style=flat-square)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2021.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/OS-GNU%2FLinux-yellowgreen.svg?style=flat-square)]()
-[![HitCount](https://hits.dwyl.com/zhibirc/wiki.svg)](https://hits.dwyl.com/zhibirc/wiki)
+[![Platform](https://img.shields.io/badge/macOS-yellowgreen.svg?style=flat-square)]()
 
 ## Table of Contents
 
-1. [Git tips](#git-tips)
+1. [Git](#git)
 1. [NPM helpers](#npm-helpers)
 1. [Shell usefulness](#shell-usefulness)
 1. [Free Up Disk Space](#free-up-disk-space)
@@ -27,6 +28,7 @@
 1. [Getting hardware info](#getting-hardware-info)
 1. [Generate a random password](#generate-a-random-password)
 1. [Amazon Web Services (AWS)](#amazon-web-services-aws)
+1. [Docker](#docker)
 1. [Cool cheatsheets / tutorials / helper tools](#cool-cheatsheets--tutorials--helper-tools)
 1. [Bash-Snippets](#bash-snippets-)
 
@@ -34,9 +36,9 @@
 ---
 
 
-### Git tips
+### Git
 
-<details><summary>:speech_balloon:</summary>
+[**Documentation**](https://git-scm.com/doc)
 
 Check if merge conflicts will occur before actual merging:
 
@@ -94,8 +96,6 @@ git prune --dry-run --verbose
 # prune and display output of all objects and actions taken by it
 git prune --progress
 ```
-
-</details>
 
 
 ### NPM helpers
@@ -699,6 +699,17 @@ which aws_completer
 # in ~/.bashrc
 complete -C '/usr/bin/aws_completer' aws
 source ~/.bashrc 
+```
+
+
+### Docker
+
+[**Documentation**](https://docs.docker.com/)
+
+Clean-up (containers, images, networks, cache):
+
+```shell
+alias d='docker' && d stop $(d ps -q) && d rm $(d ps -qa) && d rmi $(d images -q) && d network prune -f && d builder prune -f
 ```
 
 
