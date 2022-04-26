@@ -1,8 +1,9 @@
 [![Wiki](https://img.shields.io/badge/wiki-knowledge--base-orange)]()
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](license.md)
-[![Maintenance](https://img.shields.io/maintenance/yes/2021.svg?style=flat-square)]()
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](LICENSE.md)
+[![Maintenance](https://img.shields.io/maintenance/yes/2022.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/OS-GNU%2FLinux-yellowgreen.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/macOS-yellowgreen.svg?style=flat-square)]()
+[![Spellcheck](https://github.com/zhibirc/wiki/actions/workflows/spellcheck.yml/badge.svg)](https://github.com/zhibirc/wiki/actions/workflows/spellcheck.yml)
 
 ## Table of Contents
 
