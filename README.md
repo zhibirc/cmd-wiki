@@ -43,52 +43,52 @@
 
 Check if merge conflicts will occur before actual merging:
 
-```shell script
+```shell
 git merge <branch> --no-ff --no-commit
 git merge --abort
 ```
 
 Discard all unstaged changes:
 
-```shell script
+```shell
 git checkout -- .
 ```
 
 Create branch from particular commit:
 
-```shell script
+```shell
 git checkout -b <branch name> <commit hash>
 ```
 
 Create a local branch that tracks a remote branch:
 
-```shell script
+```shell
 # starting to work on an existing remote branch (e.g. upstream/develop)
 git checkout --track <remote branch name>
 ```
 
-Add/stage (modified and deleted files, new files are not affected) and commit in one command:
+Add/stage (modified and deleted files only, new files are not affected) and commit in one command:
 
-```shell script
+```shell
 git commit -am "commit message"
 ```
 
 Automate formation of release announcements:
 
-```shell script
+```shell
 git shortlog -s | awk -F\\t '{print $2}' > contributors.md
 git shortlog --no-merges | awk -F '[[:alnum:] ]+ \\([0-9]' '{print $1}' | grep . > changelog.md
 ```
 
 Get a nice list of actual different commits not shared between the branches:
 
-```shell script
+```shell
 git log --left-right --graph --cherry-pick --oneline master..develop
 ```
 
 Housekeeping tools:
 
-```shell script
+```shell
 # cleans up unreachable or "orphaned" Git objects
 
 # what is set to be pruned but not actually prune it
@@ -98,14 +98,22 @@ git prune --dry-run --verbose
 git prune --progress
 ```
 
+Ignore changes to a file that's already tracked in the repository. 
+It's a common task and is very helpful in case of adding some local tokens, for example, to configuration file with boilerplate:
+
+```shell
+git update-index --assume-unchanged <file>
+# tracking changes again
+git update-index --no-assume-unchanged <file>
+```
+
 
 ### NPM helpers
 
-Usual/typical installation for newly created front-end:
+Get debug info (useful for reports, GitHub issues, etc.):
 
-```shell script
-npm init -y
-npm i webpack webpack-cli typescript ts-loader html-webpack-plugin mocha chai -D
+```shell
+npx envinfo --binaries --languages --system --utilities
 ```
 
 
@@ -113,19 +121,19 @@ npm i webpack webpack-cli typescript ts-loader html-webpack-plugin mocha chai -D
 
 Check which init system your platform uses (**systemd** (`systemctl` command), or older **System V** (which uses the `service` command)):
 
-```shell script
+```shell
 ps --no-headers -o comm 1
 ```
 
 Remove multiple sub-folders:
 
-```shell script
+```shell
 find . -type d -name node_modules -prune -exec rm -rf '{}' \;
 ```
 
 Find patterns:
 
-```shell script
+```shell
 # find files containing a given text
 find . -type f -print0 | xargs -0 grep -l "search string"
 # "l" means that only the name of each input file with matched content will print
@@ -137,14 +145,14 @@ grep -e hacker -e root -e admin /etc/passwd
 
 Sometimes process (Apache, for example) prevents to start service on the same port (nginx, for example):
 
-```shell script
+```shell
 # end the conflict process
 sudo fuser -k 80/tcp
 ```
 
 APT
 
-```shell script
+```shell
 # list all installed packages
 apt list --installed | less
 
@@ -172,7 +180,7 @@ sudo apt update && sudo apt upgrade -y
 
 Change/setup bash custom prompt (PS1) with Git branch displaying (if exists). Specify this in `~/.bashrc` and run `source ~/.bashrc` for applying changes:
 
-```shell script
+```shell
 git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
 }
@@ -190,13 +198,13 @@ Result of the above is something like:
 
 Fast checking of PHP SSL support:
 
-```shell script
+```shell
 echo '<?php phpinfo(); ?>' | php 2>&1 |grep -i ssl
 ```
 
 Installing and basic setup of SSH Server:
 
-```shell script
+```shell
 sudo apt install openssh-server
 
 # check status
@@ -221,7 +229,7 @@ chmod 600 .ssh/authorized_keys
 
 You can check the size of interested directory with `du -sh <directory>` preliminarily.
 
-```shell script
+```shell
 # clean the thumbnail cache
 rm -rf ~/.cache/thumbnails/*
 
@@ -238,7 +246,7 @@ sudo purge-old-kernels
 
 ### Samba setup
 
-```shell script
+```shell
 sudo apt-get install -y samba samba-common python-glade2 system-config-samba
 sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
 sudo vi /etc/samba/smb.conf
@@ -259,7 +267,7 @@ dns proxy = no
 
 ### Samba share access (unrestricted)
 
-```shell script
+```shell
 sudo mkdir -p /samba/share
 cd /samba
 sudo chmod -R 0755 share
@@ -275,14 +283,14 @@ guest ok = yes
 read only = no
 ```
 
-```shell script
+```shell
 sudo service smbd restart
 ```
 
 
 ### Samba share access (restricted)
 
-```shell script
+```shell
 sudo mkdir -p /samba/share/secured
 sudo addgroup securedgroup
 cd /samba/share
@@ -292,7 +300,7 @@ sudo usermod -a -G securedgroup zhibirc
 sudo smbpasswd -a zhibirc
 ```
 
-```shell script
+```shell
 sudo vi /etc/samba/smb.conf
 ```
 
@@ -306,7 +314,7 @@ writable = yes
 browsable = yes
 ```
 
-```shell script
+```shell
 sudo service smbd restart
 ```
 
@@ -315,25 +323,25 @@ sudo service smbd restart
 
 Retrieve list of Samba master browser(s):
 
-```shell script
+```shell
 nmblookup -M -- -
 ```
 
 Show NFS exports, like the ```showmount -e``` command:
 
-```shell script
+```shell
 nmap -sV --script=nfs-showmount 127.0.0.1
 ```
 
 Mapping processes to system ports they listen for:
 
-```shell script
+```shell
 sudo netstat -tpln
 ```
 
 Serve folder:
 
-```shell script
+```shell
 python -m SimpleHTTPServer 8080
 # or
 python3 -m http.server 8080
@@ -344,14 +352,14 @@ http-server
 
 Find out MAC address by using IP address:
 
-```shell script
+```shell
 arping -I eth0 -c 2 destination_ip
 ```
 
 Using `arp-scan` allows to discover all IP hosts on the local network, including those that block all IP traffic such as firewalls and systems with ingress filters.
 It works on Ethernet and 802.11 wireless networks. Requires root privilege.
 
-```shell script
+```shell
 # "eth0" is used for example, in reality the network interface name depends on the OS, the network type and other factors
 sudo arp-scan --interface=eth0 --localnet
 # or
@@ -361,7 +369,7 @@ sudo arp-scan --localnet
 
 ### Diff between files/folders
 
-```shell script
+```shell
 # install "Meld", visual diff and merge tool for files, folders and VCS
 sudo apt install meld
 # diff between files
@@ -377,13 +385,13 @@ Also it's possible and widely used to set **Meld** as a Git `difftool` and `merg
 
 Create encrypted ZIP archive (password as a plain text):
 
-```shell script
+```shell
 zip -P s0me_paSS -r protected.zip /home/sites/*/www/
 ```
 
 Create encrypted ZIP archive (request to enter password), different choices:
 
-```shell script
+```shell
 zip --encrypt protected.zip file_name
 zip --encrypt protected.zip file1 file2 file3
 zip --encrypt -r protected.zip /home/user/folder/
@@ -398,7 +406,7 @@ so don't use it for data with limited access.
 
 It's possible to put a lot of useful shortcuts in `~/.bash_aliases` which can improve work effectiveness:
 
-```shell script
+```shell
 # General aliases
 alias df="df -h"
 alias du="du -c -h"
@@ -447,7 +455,7 @@ alias dyarn='docker run -it --rm -u=$UID:$(id -g $USER) -v "$PWD":/npm -w /npm n
 
 Use the built-in **gpg** tool:
 
-```shell script
+```shell
 # encrypt
 gpg -c important.data.txt
 # decrypt
@@ -460,13 +468,13 @@ gpg important.data.txt.gpg
 Using **ab** (Apache HTTP server benchmarking tool).
 Official docs: [link](https://httpd.apache.org/docs/2.4/programs/ab.html)
 
-```shell script
+```shell
 ab -k -c 350 -n 20000 example.com
 ```
 
 For testing multiple URL's concurrently create a shell script with multiple `ab` calls:
 
-```shell script
+```shell
 #!/bin/sh
 
 ab -n 100 -c 10 example.com/login > test1.txt &
@@ -475,7 +483,7 @@ ab -n 100 -c 10 example.com/news > test2.txt &
 
 Using **Siege**:
 
-```shell script
+```shell
 siege -d10 -c50 example.com
 ```
 
@@ -484,14 +492,14 @@ siege -d10 -c50 example.com
 
 Debug options `--verbose` (`-v`), `--trace`, `--trace-ascii`, `--trace-time` allow to get more details as they show EVERYTHING **curl** sends and receives.
 
-```shell script
+```shell
 # use "-" as filename to have the output sent to stdout
 curl --trace-ascii - http://www.example.com/
 ```
 
 Make GET request, only print the response headers and display the time it took:
 
-```shell script
+```shell
 curl -sIX GET -w "Total time: %{time_total} s\n" www.example.com
 # or
 curl -o /dev/null -D- www.example.com
@@ -499,13 +507,13 @@ curl -o /dev/null -D- www.example.com
 
 Typical usage, send GET request with headers:
 
-```shell script
+```shell
 curl -X GET 'http://www.example.com' -H 'Accept-Language: en' -H 'Authorization: Bearer A0v7mf98JJvWQTEbpEYNTt0uw2q0yl6P' -H 'Content-Type: application/json'
 ```
 
 POST request format depends on content type (`application/x-www-form-urlencoded` is the default):
 
-```shell script
+```shell
 # or simply -d
 curl --data "param1=value1&param2=value2" -X POST https://example.com/resource.cgi
 curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" -X POST http://www.example.com
@@ -513,7 +521,7 @@ curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json"
 
 Identify the HTTP options available on the target URL, including the various types of allowed HTTP methods:
 
-```shell script
+```shell
 curl -v -X OPTIONS http://www.example.com/
 ```
 
@@ -522,7 +530,7 @@ curl -v -X OPTIONS http://www.example.com/
 
 Downloading an entire Web Site:
 
-```shell script
+```shell
 # download the entire Web site
 # convert links so that they work locally, off-line
 # download all the files that are necessary to properly display a given HTML page
@@ -538,7 +546,7 @@ Specifying empty user agent with `--user-agent=""` instructs Wget not to send th
 
 ### Installing programs from sources
 
-```shell script
+```shell
 tar xzvf program.sources.tar.gz
 cd program.sources
 # configure and compile
@@ -553,7 +561,7 @@ make clean
 
 ### Installing Oracle Java 8 / 9
 
-```shell script
+```shell
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt update; sudo apt install oracle-java8-installer
 # or replace oracle-java8-installer with oracle-java9-installer to install Java 9
@@ -568,7 +576,7 @@ sudo apt install oracle-java8-set-default
 
 Get metadata information from media file:
 
-```shell script
+```shell
 # work on any file FFmpeg supports
 ffmpeg -i video.mp4 -hide_banner
 # advanced method using FFprobe, multimedia stream analyzer
@@ -577,7 +585,7 @@ ffprobe -v error -show_format -show_streams video.mp4
 
 Convert MP4 video to MP3 audio:
 
-```shell script
+```shell
 ffmpeg -i video.mp4 audio.mp3
 # or, with additional options
 ffmpeg -i video.mp4 -b:a 192k -vn audio.mp3
@@ -585,19 +593,19 @@ ffmpeg -i video.mp4 -b:a 192k -vn audio.mp3
 
 Convert RTSP stream to HLS:
 
-```shell script
+```shell
 ffmpeg -i rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov -fflags flush_packets -max_delay 2 -flags -global_header -hls_time 2 -hls_list_size 3 -vcodec copy -y video.m3u8
 ```
 
 Split a video into images:
 
-```shell script
+```shell
 mkdir video; ffmpeg -i video.mp4 image%d.jpg
 ```
 
 Reduce the file size of MP4 file:
 
-```shell script
+```shell
 # get file information
 ffmpeg -i video.mp4
 # 497 kb/s, 30 fps, 30 tbr, 15360 tbn, 60 tbc (default)
@@ -607,14 +615,14 @@ ffmpeg -i video.mp4 -b 248k video.out.mp4
 
 Crop video file:
 
-```shell script
+```shell
 ffmpeg -i video.mp4 -ss 00:00:03 -t 00:00:08 -async 1 fragment.mp4
 ```
 
 
 ### Getting file info
 
-```shell script
+```shell
 # display file or file system status
 stat file.name
 # get basic file info, recognize the type of data contained in
@@ -633,7 +641,7 @@ In case of media file container used by a multimedia stream use information from
 
 Overall:
 
-```shell script
+```shell
 uname -a
 
 sudo dmidecode | less
@@ -646,7 +654,7 @@ sudo lshw -html > system_info.html
 
 Specific:
 
-```shell script
+```shell
 # list USB devices
 lsusb
 
@@ -676,7 +684,7 @@ Or, if you prefer some GUI tool, use `hardinfo` (`sudo apt install hardinfo`).
 
 Setup:
 
-```shell script
+```shell
 sudo apt install awscli
 aws --version
 
@@ -691,7 +699,7 @@ Default output format [None]: <json|text|table>
 aws configure --profile <username> 
 ```
 
-```shell script
+```shell
 # enable command-completion feature
 
 # locate the AWS Completer script, use this path in command below
@@ -711,6 +719,18 @@ Clean-up (containers, images, networks, cache):
 
 ```shell
 alias d='docker' && d stop $(d ps -q) && d rm $(d ps -qa) && d rmi $(d images -q) && d network prune -f && d builder prune -f
+```
+
+Remove exited containers:
+
+```shell
+docker rm $(docker ps -a -q -f status=exited)
+```
+
+Build image in verbose mode (auto, plain, tty modes are available):
+
+```shell
+docker build . --tag <tag_name> --no-cache --progress=plain
 ```
 
 
