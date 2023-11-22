@@ -1,6 +1,5 @@
 [![Wiki](https://img.shields.io/badge/wiki-knowledge--base-orange)]()
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](LICENSE.md)
-[![Maintenance](https://img.shields.io/maintenance/yes/2022.svg?style=flat-square)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2023.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/OS-GNU%2FLinux-yellowgreen.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/macOS-yellowgreen.svg?style=flat-square)]()
 [![Spellcheck](https://github.com/zhibirc/wiki/actions/workflows/spellcheck.yml/badge.svg)](https://github.com/zhibirc/wiki/actions/workflows/spellcheck.yml)
@@ -40,6 +39,10 @@
 ### Git
 
 [**Documentation**](https://git-scm.com/doc)
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Check if merge conflicts will occur before actual merging:
 
@@ -106,18 +109,28 @@ git update-index --assume-unchanged <file>
 # tracking changes again
 git update-index --no-assume-unchanged <file>
 ```
+</details>
 
 
-### NPM helpers
+### NPM
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Get debug info (useful for reports, GitHub issues, etc.):
 
 ```shell
 npx envinfo --binaries --languages --system --utilities
 ```
+</details>
 
 
-### Shell usefulness
+### Shell
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Check which init system your platform uses (**systemd** (`systemctl` command), or older **System V** (which uses the `service` command)):
 
@@ -223,9 +236,14 @@ sudo systemctl restart sshd.service
 # in case of using SSH keys don't forget to copy the id_rsa.pub file to the remote host and append it to ~/.ssh/authorized_keys, then give it the right permissions:
 chmod 600 .ssh/authorized_keys
 ```
+</details>
 
 
 ### Free Up Disk Space
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 You can check the size of interested directory with `du -sh <directory>` preliminarily.
 
@@ -242,9 +260,14 @@ sudo apt-get clean
 # remove old, unused kernels, except for the last two - the current and the previous
 sudo purge-old-kernels
 ```
+</details>
 
 
 ### Samba setup
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 ```shell
 sudo apt-get install -y samba samba-common python-glade2 system-config-samba
@@ -263,9 +286,14 @@ name resolve order = bcast host
 wins support = no
 dns proxy = no
 ```
+</details>
 
 
 ### Samba share access (unrestricted)
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 ```shell
 sudo mkdir -p /samba/share
@@ -286,9 +314,14 @@ read only = no
 ```shell
 sudo service smbd restart
 ```
+</details>
 
 
 ### Samba share access (restricted)
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 ```shell
 sudo mkdir -p /samba/share/secured
@@ -317,9 +350,14 @@ browsable = yes
 ```shell
 sudo service smbd restart
 ```
+</details>
 
 
 ### Network goodies
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Retrieve list of Samba master browser(s):
 
@@ -365,9 +403,14 @@ sudo arp-scan --interface=eth0 --localnet
 # or
 sudo arp-scan --localnet
 ```
+</details>
 
 
 ### Diff between files/folders
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 ```shell
 # install "Meld", visual diff and merge tool for files, folders and VCS
@@ -379,9 +422,14 @@ meld dir1 dir2
 ```
 
 Also it's possible and widely used to set **Meld** as a Git `difftool` and `mergetool`.
+</details>
 
 
 ### Protected archives
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Create encrypted ZIP archive (password as a plain text):
 
@@ -400,9 +448,14 @@ zip --encrypt -r protected.zip /folder1/ /folder2/
 
 ZIP supports a simple password-based symmetric encryption system, which is documented in the ZIP specification, and known to be **seriously flawed**, 
 so don't use it for data with limited access.
+</details>
 
 
 ### Pumping .bash_aliases
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 It's possible to put a lot of useful shortcuts in `~/.bash_aliases` which can improve work effectiveness:
 
@@ -449,9 +502,14 @@ alias dnpx='docker run -it --rm -u=$UID:$(id -g $USER) -v "$PWD":/npm -w /npm no
 alias dnode='docker run -it --rm -u=$UID:$(id -g $USER) -v "$PWD":/npm -w /npm node node'
 alias dyarn='docker run -it --rm -u=$UID:$(id -g $USER) -v "$PWD":/npm -w /npm node yarn'
 ```
+</details>
 
 
 ### Encrypt/decrypt a file
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Use the built-in **gpg** tool:
 
@@ -461,9 +519,14 @@ gpg -c important.data.txt
 # decrypt
 gpg important.data.txt.gpg
 ```
+</details>
 
 
 ### Stress test via DoS attack
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Using **ab** (Apache HTTP server benchmarking tool).
 Official docs: [link](https://httpd.apache.org/docs/2.4/programs/ab.html)
@@ -486,9 +549,14 @@ Using **Siege**:
 ```shell
 siege -d10 -c50 example.com
 ```
+</details>
 
 
-### cURL cheatsheet
+### cURL
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Debug options `--verbose` (`-v`), `--trace`, `--trace-ascii`, `--trace-time` allow to get more details as they show EVERYTHING **curl** sends and receives.
 
@@ -524,9 +592,14 @@ Identify the HTTP options available on the target URL, including the various typ
 ```shell
 curl -v -X OPTIONS http://www.example.com/
 ```
+</details>
 
 
-### Wget basics
+### Wget
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Downloading an entire Web Site:
 
@@ -542,9 +615,14 @@ wget --recursive --convert-links --page-requisites --no-parent --wait=5 --random
 
 You may want to specify `--user-agent` option which allows you to change the "**User-Agent**" line.
 Specifying empty user agent with `--user-agent=""` instructs Wget not to send the "**User-Agent**" header in HTTP requests.
+</details>
 
 
 ### Installing programs from sources
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 ```shell
 tar xzvf program.sources.tar.gz
@@ -557,9 +635,14 @@ sudo make install
 # clean up any temp files, optional
 make clean
 ```
+</details>
 
 
 ### Installing Oracle Java 8 / 9
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 ```shell
 sudo add-apt-repository ppa:webupd8team/java
@@ -570,9 +653,14 @@ javac -version
 # set Java environment variables
 sudo apt install oracle-java8-set-default
 ```
+</details>
 
 
-### FFmpeg sweets
+### FFmpeg
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Get metadata information from media file:
 
@@ -618,9 +706,14 @@ Crop video file:
 ```shell
 ffmpeg -i video.mp4 -ss 00:00:03 -t 00:00:08 -async 1 fragment.mp4
 ```
+</details>
 
 
 ### Getting file info
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 ```shell
 # display file or file system status
@@ -634,10 +727,15 @@ file -i file.name
 identify -verbose file.name 
 ```
 
-In case of media file container used by a multimedia stream use information from [FFmpeg sweets](#ffmpeg-sweets).
+In case of media file container used by a multimedia stream use information from [FFmpeg](#ffmpeg).
+</details>
 
 
 ### Getting hardware info
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Overall:
 
@@ -675,12 +773,22 @@ sudo fdisk -l
 ```
 
 Or, if you prefer some GUI tool, use `hardinfo` (`sudo apt install hardinfo`).
+</details>
 
 
 ### Generate a random password
 
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
+</details>
+
 
 ### Amazon Web Services (AWS)
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Setup:
 
@@ -709,11 +817,16 @@ which aws_completer
 complete -C '/usr/bin/aws_completer' aws
 source ~/.bashrc 
 ```
+</details>
 
 
 ### Docker
 
 [**Documentation**](https://docs.docker.com/)
+
+<details>
+<summary>expand section 🔻🔺</summary>
+<br>
 
 Clean-up (containers, images, networks, cache):
 
@@ -732,6 +845,7 @@ Build image in verbose mode (auto, plain, tty modes are available):
 ```shell
 docker build . --tag <tag_name> --no-cache --progress=plain
 ```
+</details>
 
 
 ### Cool cheatsheets / tutorials / helper tools
