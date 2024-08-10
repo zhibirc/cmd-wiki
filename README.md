@@ -1,5 +1,5 @@
 [![Wiki](https://img.shields.io/badge/wiki-knowledge--base-orange)]()
-[![Maintenance](https://img.shields.io/maintenance/yes/2023.svg?style=flat-square)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2024.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/OS-GNU%2FLinux-yellowgreen.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/macOS-yellowgreen.svg?style=flat-square)]()
 [![Spellcheck](https://github.com/zhibirc/wiki/actions/workflows/spellcheck.yml/badge.svg)](https://github.com/zhibirc/wiki/actions/workflows/spellcheck.yml)
@@ -87,6 +87,14 @@ Get a nice list of actual different commits not shared between the branches:
 
 ```shell
 git log --left-right --graph --cherry-pick --oneline master..develop
+```
+
+Generate a "top ten list" of most commited files, the "heat map" of the code changes.
+It could be used (along with other indicators, of course) to make informative decision about extracting
+certaint components into separate services.
+
+```shell
+git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -10
 ```
 
 Housekeeping tools:
